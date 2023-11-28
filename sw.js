@@ -27,7 +27,7 @@ self.addEventListener("fetch", event => {
   }
   */
 
-  if ( !["GET", "HEAD"].includes( event.request.method.toUpperCase() ) ) {
+  if ( !["GET", "HEAD"].includes( request.method.toUpperCase() ) ) {
     if (!request.body) {
       return;
     }
