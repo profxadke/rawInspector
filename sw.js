@@ -9,6 +9,7 @@ self.addEventListener("fetch", event => {
   path = request.url.split("/").slice(3).join('/');
   console.log(`${request.method} /${path} HTTP/1.1`);
 
+  // workaround to use headers object - since, logging request.headers returns {}
   headers = {};
   request.headers.forEach( (h, i) => {
     console.log(`${i}: ${h}`);
@@ -17,7 +18,7 @@ self.addEventListener("fetch", event => {
   // console.log(headers);
 
   /*
-  // This didn't work for some reason. (request.bodyUsed returned false)
+  // This didn't work for some reason. Since, request.bodyUsed returned false.
   console.log(request.bodyUsed);
   if (request.bodyUsed) {
     request.text().then( txt => {
